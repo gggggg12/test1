@@ -1,0 +1,59 @@
+# создаь пользователя
+curl -X POST http://localhost:5000/api/create_user/vova:12345
+
+
+# создать профиль
+curl -H "Authorization: Bearer $ACCESS" -X POST -F file=@'gtges.jpg' -F f_name='max' -F s_name='popov' -F year=1997 -F type_profile=0 http://localhost:5000/api/create_profile
+
+# логин
+curl -X GET http://localhost:5000/api/login/max:12345
+
+
+export ACCESS=""
+
+
+
+
+# подписаться
+curl -H "Authorization: Bearer $ACCESS" -X POST http://localhost:5000/api/sub/1
+
+# просмотр подписчиков
+curl -H "Authorization: Bearer $ACCESS" -X GET http://localhost:5000/api/list_sub
+
+
+#подтвердить подписку
+curl -H "Authorization: Bearer $ACCESS" -X POST  http://localhost:5000/api/sub_approve/1
+
+#отказать подписку
+curl -H "Authorization: Bearer $ACCESS" -X DELETE  http://localhost:5000/api/sub_approve/1
+
+
+
+
+
+#создать пост
+curl -H "Authorization: Bearer $ACCESS" -X POST -F file=@'gtges.jpg' -F post='vsem ky' http://localhost:5000/api/create_post
+
+# просмотр постов
+curl -H "Authorization: Bearer $ACCESS" -X GET http://localhost:5000/api/view_posts
+
+
+#подтвердить подписку
+curl -H "Authorization: Bearer $ACCESS" -X POST  http://localhost:5000/api/sub_approve/1
+
+
+
+
+#лайкнуть пост
+curl -H "Authorization: Bearer $ACCESS" -X POST  http://localhost:5000/api/like_post/10
+
+#удалить лайк
+curl -H "Authorization: Bearer $ACCESS" -X DELETE  http://localhost:5000/api/like_post/10
+
+#просмотр лайков
+curl -H "Authorization: Bearer $ACCESS" -X GET  http://localhost:5000/api/view_like/1
+
+
+
+
+
