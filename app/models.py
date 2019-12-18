@@ -54,7 +54,7 @@ class Subscriber(db.Model):
     user_id_to = db.Column(BIGINT(unsigned=True), db.ForeignKey('user.id'))
     approve = db.Column(db.Boolean())
     date = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-   
+    db.UniqueConstraint('user_id_to', 'user_id_from')
 
 
 class Post(db.Model):
@@ -95,7 +95,7 @@ class Likes(db.Model):
     entity_id = db.Column(BIGINT(unsigned=True))
     entity_type = db.Column(db.String(length=50))
     date = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
-
+    db.UniqueConstraint('user_id', 'entity_id', 'entity_type')
 
 
 db.create_all()
